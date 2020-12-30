@@ -29,9 +29,14 @@ def test_app_open_connection_get_attribute_module3():
     open_connection = "open_connection" in dir(app)
     assert open_connection, "Have you defined a function named `open_connection`?"
 
-    getattr_g = "getattr:g:_connection:None" in get_functions(app.open_connection)
+    result = [
+        item
+        for item in get_functions(app.open_connection)
+        if item.startswith("getattr:g:_connection")
+    ]
+    result_len = len(result) == 1
     assert (
-        getattr_g
+        result_len
     ), "Have you used the `getattr` function to get the global `_connection`?"
 
 
@@ -166,9 +171,14 @@ def test_app_close_connection_module3():
     close_connection = "close_connection" in dir(app)
     assert close_connection, "Have you defined a function named `close_connection`?"
 
-    getattr_g = "getattr:g:_connection:None" in get_functions(app.open_connection)
+    result = [
+        item
+        for item in get_functions(app.open_connection)
+        if item.startswith("getattr:g:_connection")
+    ]
+    result_len = len(result) == 1
     assert (
-        getattr_g
+        result_len
     ), "Have you used the `getattr` function to get the global `_connection`?"
 
     close = "close" in get_functions(app.close_connection)
