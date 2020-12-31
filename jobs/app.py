@@ -1,7 +1,8 @@
 from flask import Flask, render_template, g
 import sqlite3
 
-PATH = "C:\Users\Jobani\Documents\GitHub\PythonFlask-JobBoard\db\jobs.sqlite"
+PATH =
+"C:\Users\Jobani\Documents\GitHub\PythonFlask-JobBoard\db\jobs.sqlite"
 app = Flask(__name__)
 def open_connection():
     connection = getattr(g, '_connection', None)
