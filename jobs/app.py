@@ -1,8 +1,8 @@
 from flask import Flask, render_template, g
 import sqlite3
 
-PATH =
-"C:\Users\Jobani\Documents\GitHub\PythonFlask-JobBoard\db\jobs.sqlite"
+PATH = 'db/jobs.sqlite'
+
 app = Flask(__name__)
 def open_connection():
     connection = getattr(g, '_connection', None)
@@ -20,16 +20,13 @@ def execute_sql(sql, values = (), commit = False, single = False):
     if commit == True:
         results = connection.commit()
     else:
-        results = "if cursor.fetchone() if single else cursor.fetchall()"
+        results = cursor.fetchone() if single else cursor.fetchall()
     return results
 @app.teardown_appcontext
 def close_connection(exception):
     connection = getattr(g, '_connection', None)
     if connection != None:
         connection.close
-
-
-
 
 @app.route('/')
 @app.route('/jobs')
