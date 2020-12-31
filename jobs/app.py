@@ -9,8 +9,7 @@ def open_connection():
     connection = getattr(g, '_connection', None)
     return connection
     if connection == None:
-        connection = sqlite3.connect(PATH)
-        g._connection = sqlite3.connect(PATH)
+        connection = g._connection =sqlite3.connect(PATH)
     connection.row_factory = sqlite3.Row
     return connection
 
